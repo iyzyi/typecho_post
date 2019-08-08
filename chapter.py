@@ -28,8 +28,8 @@ class Chapter():
         #全角空格是因为typecho是markdown，四个半角空格会使得形成代码块
         self.txt = re.sub(r'^\s*','　　', self.txt)
         self.txt = re.sub(r'\s*$', '', self.txt)
-        with open('changed.txt', 'w', encoding='utf-8') as f:
-            f.write(self.txt)
+        #with open('changed.txt', 'w', encoding='utf-8') as f:
+        #    f.write(self.txt)
 
     def cmp(self, a, b):
         return a.number > b.number

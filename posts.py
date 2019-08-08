@@ -5,8 +5,8 @@ import re, os, time
 def novel(file_path):
     post = Post()
     post.login()
-    category_name = '大说访谈录'
-    category_slug = 'big_novel2'
+    category_name = '大说'
+    category_slug = 'big'
     category_mid = post.category(category_name, category_slug)
     if category_mid:
         with open(file_path, 'r', encoding='utf-8') as f:
@@ -21,4 +21,4 @@ def novel(file_path):
             print("%d/%d"%(num+1,len(chapters)))
         
 if __name__ == '__main__':
-    novel('大说访谈录.txt')
+    novel(r'D:\桌面\东哥\大说访谈录.txt')

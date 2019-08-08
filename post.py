@@ -11,8 +11,8 @@ class Post():
     def login(self):
         url = self.base_url + '/index.php/action/login?_=be45360f1a19e7e1defca0f4d836b7cf'
         data = {
-            'name': 'admin',
-            'password': 'DdhjX520',
+            'name': 'user',
+            'password': 'password',
             'referer': 'http%3A%2F%2Fyjd.fatiger.cn%2Fadmin%2F'
             }
         headers = {
@@ -30,8 +30,8 @@ class Post():
         r = self.session.get(url, headers=headers)
         self.session = copy.deepcopy(self.session_login)
         html = r.content.decode('utf-8')
-        with open('22222.html','w',encoding='utf-8') as f:
-            f.write(html)
+        #with open('22222.html','w',encoding='utf-8') as f:
+        #    f.write(html)
         tag_list = re.findall(r'\<a href="http://yjd\.fatiger\.cn/admin/category\.php\?mid\=(\d+?)">(.+?)\</a>', html)
         for tag in tag_list:
             if tag[1] == name:
