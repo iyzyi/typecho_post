@@ -1,3 +1,30 @@
+'''
+需要对typecho的/var/Widget/Security.php改动一处地方(修改token)：
+public function execute()
+{
+    $this->_options = $this->widget('Widget_Options');
+    $user = $this->widget('Widget_User');
+
+    $this->_token = $this->_options->secret;
+    if ($user->hasLogin()) {
+        $this->_token .= '&' . $user->authCode . '&' . $user->uid;
+    }
+->> $this->_token = "I need to change part of token for up files easy by python.";
+}
+添加->>处所在的那一行
+
+对token的说明：
+token由两部分组成，以&连接，再取MD5，前半段不是固定的，我读源代码没读懂，所以改成了
+'I need to change part of token for up files easy by python.'
+后半段是固定的网址（对于某一功能而言是固定的）。
+登录admin的token
+MD5前：I need to change part of token for up files easy by python.&http://yjd.fatiger.cn/admin/login.php?referer=http%3A%2F%2Fyjd.fatiger.cn%2Fadmin%2F
+MD5后：be45360f1a19e7e1defca0f4d836b7cf
+发布文章的token
+MD5前：I need to change part of token for up files easy by python.&http://yjd.fatiger.cn/admin/write-post.php
+MD5后：b4af7d3e443a7a19067a1479dedf0a70
+'''
+
 import re, copy, requests
 
 class Post():
