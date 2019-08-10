@@ -27,9 +27,9 @@ if __name__ == '__main__':
     post.login()
     category_name = 'CTF'
     category_slug = 'ctf'
-    title = '第二次CTF双月赛'
+    title = '第三次CTF双月赛'
     category_mid = post.category(category_name, category_slug)
-    file_path = r'ctf.md'
+    file_path = r'ctf3.md'
     text = youdao(file_path)
     if category_mid:
         post.send_text(title, text, category_mid)

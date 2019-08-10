@@ -48,6 +48,7 @@ class Post():
     proxies = {'http':'127.0.0.1:8080','https': '127.0.0.1:8080'}    #burpsuite抓包
 
     def login(self):
+        print('登录中......')
         second_half_token = '{}/admin/login.php?referer={}%2Fadmin%2F'.format(self.base_url, url_encode(self.base_url))
         token = md5(self.first_half_token + second_half_token)
         url = self.base_url + '/index.php/action/login?_=%s' % token
@@ -66,6 +67,7 @@ class Post():
 
 
     def search_category_mid(self, name):
+        print('查找分类中......')
         url = '%s/admin/manage-categories.php'%self.base_url
         headers = {'User-Agent': self.user_agent}
         r = self.session.get(url, headers=headers)
@@ -82,6 +84,7 @@ class Post():
 
 
     def make_category(self, name, slug, description): 
+        print('创建分类中......')
         second_half_token = '%s/admin/category.php' % self.base_url
         token = md5(self.first_half_token + second_half_token)
         url = self.base_url + '/index.php/action/metas-category-edit?_=%s' % token
@@ -110,7 +113,7 @@ class Post():
                 print('创建目录失败')
 
 
-    def category(self, name, slug, description=''):   
+    def category(self, name, slug, description=''):
         mid = self.search_category_mid(name)
         #print(mid)
         if mid:
@@ -121,6 +124,7 @@ class Post():
 
 
     def send_text(self, title, text, mid):
+        print('发送文本中......')
         second_half_token = '%s/admin/write-post.php' % self.base_url
         token = md5(self.first_half_token + second_half_token)
         url = self.base_url + '/index.php/action/contents-post-edit?_=%s' % token
