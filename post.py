@@ -53,8 +53,8 @@ class Post():
         token = md5(self.first_half_token + second_half_token)
         url = self.base_url + '/index.php/action/login?_=%s' % token
         data = {
-            'name': 'admin',
-            'password': 'DdhjX520',
+            'name': 'your user name',
+            'password': 'your password',
             'referer': '{}%2Fadmin%2F'.format(url_encode(self.base_url))
             }
         headers = {
