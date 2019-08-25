@@ -42,7 +42,7 @@ public function execute()
 
 ## 文件简介
 
-**post.py** 登录博客，创建/查找标签，发送文章
+**post.py** 登录博客，创建/查找标签，发送文章，发送图片
 
 **post_novel.py** 将小说按章节分段，批量向博客发送
 
